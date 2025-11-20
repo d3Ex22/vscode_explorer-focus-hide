@@ -45,7 +45,7 @@ Original repository: [https://github.com/Fooxly/workspace](https://github.com/Fo
 
 ## License
 
-This project is licensed under the AGPL-3.0 License.
+This project is licensed under the MIT License.
 
 ### Original License (Fooxly/workspace)
 

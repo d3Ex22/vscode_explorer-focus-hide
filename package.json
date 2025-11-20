@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "publisher": "d3Ex22",
   "author": "d3Ex22",
-  "license": "AGPL-3.0",
+  "license": "MIT",
   "homepage": "https://github.com/d3Ex22/vscode_explorer-focus-hide",
   "repository": {
     "type": "git",
