@@ -1,40 +1,126 @@
 {
   "name": "explorer-focus-hide",
-  "displayName": "Explorer Focus/Hide",
-  "description": "Explorer Focus or Hide functionnalities to hide or focus on multiple folders/files",
-  "version": "0.0.1",
+  "displayName": "Explorer Focus & Hide",
+  "description": "Hide or Focus specific files in the explorer with toggle controls. Inspired by 'Workspace' by Fooxly.",
+  "version": "1.0.0",
+  "publisher": "d3Ex22",
+  "author": "d3Ex22",
+  "license": "AGPL-3.0",
+  "homepage": "https://github.com/d3Ex22/vscode_explorer-focus-hide",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/d3Ex22/vscode_explorer-focus-hide.git"
+  },
+  "bugs": {
+    "url": "https://github.com/d3Ex22/vscode_explorer-focus-hide/issues"
+  },
+  "keywords": [
+    "explorer",
+    "focus",
+    "hide",
+    "visibility",
+    "productivity",
+    "file",
+    "folder",
+    "workspace",
+    "exclude"
+  ],
+  "icon": "assets/icon.png",
   "engines": {
-    "vscode": "^1.106.1"
+    "vscode": "^1.81.0"
   },
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "explorer-focus-hide.helloWorld",
-        "title": "Hello World"
+        "command": "explorer-focus-hide.toggleFocusItem",
+        "title": "Mark for Focus"
+      },
+      {
+        "command": "explorer-focus-hide.toggleHideItem",
+        "title": "Mark for Hide"
+      },
+      {
+        "command": "explorer-focus-hide.resetItem",
+        "title": "Reset Focus/Hide"
+      },
+      {
+        "command": "explorer-focus-hide.enableHideMode",
+        "title": "Enable Hide Mode",
+        "icon": "$(eye-closed)"
+      },
+      {
+        "command": "explorer-focus-hide.disableHideMode",
+        "title": "Disable Hide Mode",
+        "icon": "$(eye)"
+      },
+      {
+        "command": "explorer-focus-hide.enableFocusMode",
+        "title": "Enable Focus Mode",
+        "icon": "$(circle-filled)"
+      },
+      {
+        "command": "explorer-focus-hide.disableFocusMode",
+        "title": "Disable Focus Mode",
+        "icon": "$(target)"
       }
-    ]
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "explorer-focus-hide.toggleFocusItem",
+          "group": "7_modification@1",
+          "title": "Focus/Unfocus (Toggle)"
+        },
+        {
+          "command": "explorer-focus-hide.toggleHideItem",
+          "group": "7_modification@2",
+          "title": "Hide/Unhide (Toggle)"
+        },
+        {
+          "command": "explorer-focus-hide.resetItem",
+          "group": "7_modification@3",
+          "title": "Reset Item (Clear)"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "explorer-focus-hide.enableFocusMode",
+          "when": "view == workbench.explorer.fileView && !explorer-focus-hide.focusMode",
+          "group": "navigation@1"
+        },
+        {
+          "command": "explorer-focus-hide.disableFocusMode",
+          "when": "view == workbench.explorer.fileView && explorer-focus-hide.focusMode",
+          "group": "navigation@1"
+        },
+        {
+          "command": "explorer-focus-hide.enableHideMode",
+          "when": "view == workbench.explorer.fileView && !explorer-focus-hide.hideMode",
+          "group": "navigation@2"
+        },
+        {
+          "command": "explorer-focus-hide.disableHideMode",
+          "when": "view == workbench.explorer.fileView && explorer-focus-hide.hideMode",
+          "group": "navigation@2"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "pretest": "npm run compile && npm run lint",
-    "lint": "eslint src",
-    "test": "vscode-test"
+    "watch": "tsc -watch -p ./"
   },
   "devDependencies": {
-    "@types/vscode": "^1.106.1",
-    "@types/mocha": "^10.0.10",
-    "@types/node": "22.x",
-    "typescript-eslint": "^8.46.3",
-    "eslint": "^9.39.1",
-    "typescript": "^5.9.3",
-    "@vscode/test-cli": "^0.0.12",
-    "@vscode/test-electron": "^2.5.2"
+    "@types/vscode": "^1.81.0",
+    "@types/node": "20.x",
+    "typescript": "^5.2.2"
   }
 }
